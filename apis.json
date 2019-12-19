@@ -1,0 +1,137 @@
+{
+    "name": "Quandl",
+    "description": "Quandl delivers financial data to users in the format they want. Access thousands of databases via the Quandl API or in your tool of choice.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/11440-quandl.jpg",
+    "tags": [
+        "currency",
+        "data",
+        "exchange rates",
+        "finance",
+        "financial",
+        "general data",
+        "gold",
+        "have api",
+        "have api key",
+        "imports",
+        "investment",
+        "market data",
+        "precious metals",
+        "profile",
+        "relative data",
+        "service api",
+        "sign in with github",
+        "sign in with google",
+        "sign in with linkedin",
+        "silver",
+        "stock data",
+        "target",
+        "visualizations"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/quandl\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Quandl Precious Metals",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/11440-quandl.jpg",
+            "humanURL": "http:\/\/quandl.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/quandl-precious-metals-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Website",
+            "url": "http:\/\/quandl.com"
+        },
+        {
+            "type": "Authentication",
+            "url": "https:\/\/docs.quandl.com\/docs#section-authentication"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.quandl.com\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/blog.quandl.com\/feed\/"
+        },
+        {
+            "type": "Branding",
+            "url": "https:\/\/www.quandl.com\/brand-guidelines"
+        },
+        {
+            "type": "Contact Form",
+            "url": "https:\/\/www.quandl.com\/contact"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/quandl"
+        },
+        {
+            "type": "Documentation",
+            "url": "https:\/\/docs.quandl.com\/"
+        },
+        {
+            "type": "Errors",
+            "url": "https:\/\/docs.quandl.com\/docs\/error-codes"
+        },
+        {
+            "type": "Getting Started",
+            "url": "https:\/\/docs.quandl.com\/docs\/getting-started"
+        },
+        {
+            "type": "LinkedIn",
+            "url": "https:\/\/www.linkedin.com\/company\/2459204\/?trk=tyah&trkInfo=clickedVertical%3Acompany%2CclickedEntityId%3A2459204%2Cidx%3A2-1-2%2CtarId%3A1479320490204%2Ctas%3Aquandl"
+        },
+        {
+            "type": "Login",
+            "url": "https:\/\/www.quandl.com\/?modal=login"
+        },
+        {
+            "type": "Press",
+            "url": "https:\/\/www.quandl.com\/press"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/quandl"
+        },
+        {
+            "type": "Registration",
+            "url": "https:\/\/www.quandl.com\/?modal=login"
+        },
+        {
+            "type": "Spreadsheets",
+            "url": "https:\/\/docs.quandl.com\/docs\/excel-add-in"
+        },
+        {
+            "type": "Status",
+            "url": "http:\/\/status.quandl.com\/"
+        },
+        {
+            "type": "Support",
+            "url": "https:\/\/docs.quandl.com\/docs\/contact-support"
+        },
+        {
+            "type": "Terms of Service",
+            "url": "https:\/\/www.quandl.com\/terms"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/quandl"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/www.quandl.com"
+        }
+    ]
+}
