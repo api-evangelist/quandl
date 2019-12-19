@@ -1,0 +1,137 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        "httpswww.quandl.com\/api\/v3"
+    ],
+    "paths": {
+        "\/LBMA\/GOLD": {
+            "get": {
+                "summary": "Get Gold Pricing",
+                "description": "Pulls pricing for Gold, London A.M. Fixing.",
+                "operationId": "GetGoldLondAMFixing",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/WGC\/GOLD_DAILY_USD": {
+            "get": {
+                "summary": "Get Gold Pricing",
+                "description": "Pulls pricing for Gold, World Gold Council.",
+                "operationId": "GetGoldWorldGoldCouncil",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/BUNDESBANK\/BBK01_WT5511": {
+            "get": {
+                "summary": "Get Gold Pricing",
+                "description": "Pulls pricing for BUNDESBANK\/BBK01_WT5511.",
+                "operationId": "GetGoldBundeshbank",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/CHRIS\/CME_GC1": {
+            "get": {
+                "summary": "Get Gold Pricing",
+                "description": "Pulls pricing for Gold, COMEX Gold Futures.",
+                "operationId": "GetGoldComexGoldFutures",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/SHFE\/AUV2013": {
+            "get": {
+                "summary": "Get Gold Pricing",
+                "description": "Pulls pricing for Gold, Shanghai Gold Futures.",
+                "operationId": "GetGoldShanghaiGoldFuture",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/WORLDBANK\/WLD_GOLD": {
+            "get": {
+                "summary": "Get Gold Pricing",
+                "description": "Pulls pricing for Gold, World Bank.",
+                "operationId": "GetGoldWorldBank",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/LBMA\/SILVER": {
+            "get": {
+                "summary": "Get Silver pricing",
+                "description": "Pulls pricing for Silver, London fixing, USD equivalent.",
+                "operationId": "GetSilverLondonFixingUSDEquivalent",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/SHFE\/AGV2013": {
+            "get": {
+                "summary": "Get Silver Pricing",
+                "description": "Pulls pricing for Silver, Shanghai Silver Futures.",
+                "operationId": "GetSilverShanghaiSilverFutures",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/CHRIS\/CME_SI1": {
+            "get": {
+                "summary": "Get Silver Pricing",
+                "description": "Pulls pricing Silver, COMEX Silver Futures.",
+                "operationId": "GetSilverComexSilverFutures",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/WORLDBANK\/WLD_SILVER": {
+            "get": {
+                "summary": "Get Silver Pricing",
+                "description": "Pull pricing Silver, World Bank.",
+                "operationId": "GetSilverWorldBank",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/JOHNMATT\/PLAT": {
+            "get": {
+                "summary": "Get Platinum Pricing",
+                "description": "Pulls pricing Platinum, Johnson Mathey London.",
+                "operationId": "GetPlatinumJohnsonMatheyLond",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/CHRIS\/CME_PL1": {
+            "get": {
+                "summary": "Get Platinum Pricing",
+                "description": "Pulls pricing Platinum, NYMEX Platinum Futures.",
+                "operationId": "GetPlatinumNYMEXPlatinumFuture",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/JOHNMATT\/PALL": {
+            "get": {
+                "summary": "Get Palladium Pricing",
+                "description": "Pulls pricing for Palladium, Johnson Mathey London.",
+                "operationId": "GetPlladiumJohnsonMatheyLondon",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/CHRIS\/CME_PA1": {
+            "get": {
+                "summary": "Get Palladium Pricing",
+                "description": "Pulls pricing for Palladium, NYMEX Palladium Futures.",
+                "operationId": "GetPalladiumNymexPalladiumFutures",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
