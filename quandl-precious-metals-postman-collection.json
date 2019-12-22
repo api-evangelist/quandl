@@ -1,5 +1,5 @@
 {
-    "id": "e8dbcba9be691018cb162e5683c10122",
+    "id": "04154126c761bdf4b3a1f47f64596131",
     "name": "Quandl Precious Metals",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "9b5f061e4fa8aca894f7fe44f152d466",
+            "id": "67003392c35d356bf2ead9be6b74b5a5",
             "name": "Get Gold Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/LBMA\/GOLD",
             "description": "Pulls pricing for Gold, London A.M. Fixing.",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "340089f7c9c7e81816185c17a37b5615",
+            "id": "63af2824632999e3dfb9199434981eb7",
             "name": "Get Gold Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/WGC\/GOLD_DAILY_USD",
             "description": "Pulls pricing for Gold, World Gold Council.",
@@ -52,11 +52,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "847227675a96811a942be0c75f1608bf",
+            "id": "303b972acf0fd82767eb6e5c4ae12579",
             "name": "Get Gold Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/BUNDESBANK\/BBK01_WT5511",
             "description": "Pulls pricing for BUNDESBANK\/BBK01_WT5511.",
@@ -75,11 +75,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "a8979910f403f490365674107e7ab7bc",
+            "id": "622e9ace977740ff424326d411af0852",
             "name": "Get Gold Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/CHRIS\/CME_GC1",
             "description": "Pulls pricing for Gold, COMEX Gold Futures.",
@@ -98,11 +98,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "33a1a4929e476b9de750561b2230ad91",
+            "id": "ee751f32f6ad400d513f4d4b7ad4785d",
             "name": "Get Gold Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/SHFE\/AUV2013",
             "description": "Pulls pricing for Gold, Shanghai Gold Futures.",
@@ -121,11 +121,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "2c5b50c63bd2990ba6ce81b2e6115e78",
+            "id": "2f9890ba6001cf0162e6a27631bdb00c",
             "name": "Get Gold Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/WORLDBANK\/WLD_GOLD",
             "description": "Pulls pricing for Gold, World Bank.",
@@ -144,11 +144,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "25cf387db4f2e07d25691f34f816e23f",
+            "id": "5670ad7bd3ff8e49eea87804e75c08c7",
             "name": "Get Silver pricing",
             "url": "httpswww.quandl.com\/api\/v3\/LBMA\/SILVER",
             "description": "Pulls pricing for Silver, London fixing, USD equivalent.",
@@ -167,11 +167,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "49e958c67af1c8867702b98d620c6e00",
+            "id": "7f3dba74656857edba68103eadb27fa7",
             "name": "Get Silver Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/SHFE\/AGV2013",
             "description": "Pulls pricing for Silver, Shanghai Silver Futures.",
@@ -190,11 +190,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "d2403bd8d5a7b1e304be8ee926f1e2b5",
+            "id": "eb1f5a6441e6cd3b2e22927ec69930c5",
             "name": "Get Silver Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/CHRIS\/CME_SI1",
             "description": "Pulls pricing Silver, COMEX Silver Futures.",
@@ -213,11 +213,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "10c30ecc709eef1eb63b4425c2a0ed4e",
+            "id": "fb78eaf0b726e4e522cac4fd3e2f41e1",
             "name": "Get Silver Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/WORLDBANK\/WLD_SILVER",
             "description": "Pull pricing Silver, World Bank.",
@@ -236,11 +236,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "e76945bb295d173ad140a4618cdd4022",
+            "id": "a7b7aa284db4de7122be5dae0e73fcc0",
             "name": "Get Platinum Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/JOHNMATT\/PLAT",
             "description": "Pulls pricing Platinum, Johnson Mathey London.",
@@ -259,11 +259,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "8f16c5b07103691652b3c4d0d0d33e29",
+            "id": "504fe540e5a03a25555415ca915592a3",
             "name": "Get Platinum Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/CHRIS\/CME_PL1",
             "description": "Pulls pricing Platinum, NYMEX Platinum Futures.",
@@ -282,11 +282,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "1e91232136797ef3cfbc36b38f5d6129",
+            "id": "09e9368c36cf6358c60b56b9767af5e9",
             "name": "Get Palladium Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/JOHNMATT\/PALL",
             "description": "Pulls pricing for Palladium, Johnson Mathey London.",
@@ -305,11 +305,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         },
         {
-            "id": "0bdec8082ff365b4c01bac3c060cbc02",
+            "id": "8b07503091f3751e2a76d891e5737272",
             "name": "Get Palladium Pricing",
             "url": "httpswww.quandl.com\/api\/v3\/CHRIS\/CME_PA1",
             "description": "Pulls pricing for Palladium, NYMEX Palladium Futures.",
@@ -328,7 +328,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "e8dbcba9be691018cb162e5683c10122",
+            "collectionId": "04154126c761bdf4b3a1f47f64596131",
             "rawModeData": ""
         }
     ]
