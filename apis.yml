@@ -1,0 +1,19 @@
+aid: quandl
+url: https://raw.githubusercontent.com/api-evangelist/quandl/refs/heads/main/apis.yml
+apis:
+- aid: quandl:quandl-api
+  name: Quandl / FRED Financial Data API
+  tags:
+  - Finance
+  - Economic Data
+  - Time Series
+  - CSV
+  - Market Data
+  image: https://raw.githubusercontent.com/api-evangelist/quandl/refs/heads/main/image.png
+  humanURL: https://data.nasdaq.com/
+  baseURL: https://data.nasdaq.com/api/v3
+  properties:
+  - url: https://data.nasdaq.com/
+    type: Documentation
+  description: >-
+    Quandl (now part of Nasdaq) and FRED (Federal Reserve Economic Data) provide APIs for financial and economic time-series data. APIs deliver stock prices, economic indicators, interest rates, and commodity data in JSON and CSV formats for quantitative analysis and financial modeling.
