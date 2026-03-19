@@ -23,6 +23,8 @@ apis:
     type: RateLimits
   - url: https://docs.data.nasdaq.com/docs/python-installation
     type: SDKs
+  - url: openapi/nasdaq-data-link-timeseries-openapi.yml
+    type: OpenAPI
   description: >-
     Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats. Authenticated users receive up to 50,000 calls per day.
 
@@ -88,6 +90,12 @@ common:
   type: SDKs
 - url: https://github.com/Nasdaq/NasdaqCloudDataService-SDK-Java
   type: SDKs
+- url: openapi/nasdaq-data-link-timeseries-openapi.yml
+  type: OpenAPI
+- url: json-schema/nasdaq-data-link-dataset-schema.json
+  type: JSONSchema
+- url: json-ld/nasdaq-data-link-context.jsonld
+  type: JSONLDContext
 maintainers:
 - name: Kin Lane
   email: kin@apievangelist.com

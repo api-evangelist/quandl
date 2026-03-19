@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/quandl/json-schema/nasdaq-data-link-dataset-schema.json",
+  "title": "Nasdaq Data Link Dataset",
+  "description": "Schema for a Nasdaq Data Link (formerly Quandl) time-series dataset record, including metadata and data rows.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Internal Nasdaq Data Link dataset identifier"
+    },
+    "dataset_code": {
+      "type": "string",
+      "description": "Dataset code within its database (e.g., AAPL, GDP, CL1)"
+    },
+    "database_code": {
+      "type": "string",
+      "description": "Database code (e.g., WIKI, FRED, CHRIS, BCOM)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable dataset name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed dataset description including source and coverage"
+    },
+    "refreshed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when dataset was last refreshed with new data"
+    },
+    "newest_available_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Most recent date with available data"
+    },
+    "oldest_available_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Oldest date with available data"
+    },
+    "column_names": {
+      "type": "array",
+      "description": "Ordered list of column names matching data row positions",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "examples": [
+        ["Date", "Open", "High", "Low", "Close", "Volume", "Adj. Close"],
+        ["Date", "Value"],
+        ["Date", "Open", "High", "Low", "Settle", "Volume", "Open Interest"]
+      ]
+    },
+    "frequency": {
+      "type": "string",
+      "enum": ["annual", "quarterly", "monthly", "weekly", "daily"],
+      "description": "Native data frequency"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["Time Series"],
+      "description": "Dataset type"
+    },
+    "premium": {
+      "type": "boolean",
+      "description": "True if access to this dataset requires a paid subscription"
+    },
+    "data": {
+      "type": "array",
+      "description": "Data rows; each row is an array matching column_names order. First element is always a date string.",
+      "items": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "number" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Start of returned date range"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "End of returned date range"
+    }
+  },
+  "required": ["dataset_code", "database_code", "name", "column_names", "frequency"],
+  "examples": [
+    {
+      "id": 9775687,
+      "dataset_code": "AAPL",
+      "database_code": "WIKI",
+      "name": "Apple Inc. (AAPL) Prices, Dividends, Splits and Trading Volume",
+      "description": "End of day open, high, low, close and volume, dividends and splits, and split/dividend adjusted open, high, low close and volume for Apple Inc. (AAPL).",
+      "refreshed_at": "2018-03-27T21:46:11.849Z",
+      "newest_available_date": "2018-03-27",
+      "oldest_available_date": "1980-12-12",
+      "column_names": ["Date", "Open", "High", "Low", "Close", "Volume", "Ex-Dividend", "Split Ratio", "Adj. Open", "Adj. High", "Adj. Low", "Adj. Close", "Adj. Volume"],
+      "frequency": "daily",
+      "type": "Time Series",
+      "premium": false,
+      "data": [
+        ["2018-03-27", 173.68, 175.15, 166.92, 168.34, 38962839.0, 0.0, 1.0, 173.68, 175.15, 166.92, 168.34, 38962839.0]
+      ],
+      "start_date": "2018-03-27",
+      "end_date": "2018-03-27"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "ndl": "https://data.nasdaq.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Dataset": {
+      "@id": "dcat:Dataset",
+      "@type": "@id"
+    },
+    "id": {
+      "@id": "schema:identifier",
+      "@type": "xsd:integer"
+    },
+    "dataset_code": {
+      "@id": "dcterms:identifier"
+    },
+    "database_code": {
+      "@id": "ndl:databaseCode"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "description": {
+      "@id": "dcterms:description"
+    },
+    "refreshed_at": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    },
+    "newest_available_date": {
+      "@id": "dcterms:temporal",
+      "@type": "xsd:date"
+    },
+    "oldest_available_date": {
+      "@id": "dcat:startDate",
+      "@type": "xsd:date"
+    },
+    "column_names": {
+      "@id": "dcat:column"
+    },
+    "frequency": {
+      "@id": "dcterms:accrualPeriodicity"
+    },
+    "premium": {
+      "@id": "ndl:premium",
+      "@type": "xsd:boolean"
+    },
+
+    "Database": {
+      "@id": "dcat:Catalog",
+      "@type": "@id"
+    },
+    "database_code_catalog": {
+      "@id": "dcterms:identifier"
+    },
+    "datasets_count": {
+      "@id": "dcat:dataset",
+      "@type": "xsd:integer"
+    },
+
+    "DataPoint": {
+      "@id": "schema:Observation",
+      "@type": "@id"
+    },
+    "date": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:date"
+    },
+    "value": {
+      "@id": "schema:value",
+      "@type": "xsd:decimal"
+    },
+
+    "DatatableRow": {
+      "@id": "schema:PropertyValue",
+      "@type": "@id"
+    }
+  }
+}
