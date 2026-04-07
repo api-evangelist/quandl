@@ -22,10 +22,10 @@ security:
   - apiKeyHeader: []
 
 tags:
-  - name: Datasets
-    description: Time-series dataset retrieval
   - name: Databases
     description: Database catalog and metadata
+  - name: Datasets
+    description: Time-series dataset retrieval
   - name: Tables
     description: Tabular dataset retrieval
 
