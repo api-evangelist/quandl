@@ -1,10 +1,22 @@
-# Unknown (quandl)
+# Quandl (quandl)
+Nasdaq Data Link (formerly Quandl) provides REST and streaming APIs for financial and economic data including time-series datasets, tabular datasets, and real-time market data feeds. Datasets cover stock prices, economic indicators, interest rates, commodities, equity fundamentals, options data, and alternative data sets.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/quandl/refs/heads/main/apis.yml)
 
+## Scope
+
+- **Type:** Index
+- **Position:** Consuming
+- **Access:** 3rd-Party
+
+## Tags:
+
+ - Finance, Market Data, Economic Data, Time Series, Streaming
+
 ## Timestamps
 
-- **Modified:** 2026-03-18 
+- **Created:** 2026-03-18
+- **Modified:** 2026-04-28
 
 ## APIs
 
@@ -13,6 +25,7 @@ Nasdaq Data Link REST API (formerly Quandl) provides access to financial and eco
 
 **Human URL:** [https://docs.data.nasdaq.com/](https://docs.data.nasdaq.com/)
 
+**Base URL:** https://data.nasdaq.com/api/v3
 
 #### Tags:
 
@@ -32,6 +45,7 @@ Nasdaq Data Link Tables API provides access to tabular financial datasets includ
 
 **Human URL:** [https://docs.data.nasdaq.com/](https://docs.data.nasdaq.com/)
 
+**Base URL:** https://data.nasdaq.com/api/v3
 
 #### Tags:
 
@@ -46,7 +60,6 @@ Nasdaq Data Link Tables API provides access to tabular financial datasets includ
 Nasdaq Cloud Data Service (NCDS) provides streaming and REST APIs for real-time and delayed market data delivery including equities, options, and fixed income from Nasdaq exchange feeds.
 
 **Human URL:** [https://github.com/Nasdaq/NasdaqCloudDataService-REST-API](https://github.com/Nasdaq/NasdaqCloudDataService-REST-API)
-
 
 #### Tags:
 
@@ -76,5 +89,7 @@ Nasdaq Cloud Data Service (NCDS) provides streaming and REST APIs for real-time 
 - [JSONLDContext](json-ld/nasdaq-data-link-context.jsonld)
 
 ## Maintainers
+
+**FN:** Kin Lane
 
 **Email:** kin@apievangelist.com
