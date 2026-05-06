@@ -1,0 +1,395 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Nasdaq Data Link Time-Series REST API
+  description: Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets
+    including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats. Authenticated
+    users receive up to 50,000 API calls per day.
+  tags:
+  - Quandl
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: quandl
+    baseUri: https://data.nasdaq.com/api/v3
+    description: Nasdaq Data Link Time-Series REST API HTTP API.
+    authentication:
+      type: apikey
+      in: query
+      name: api_key
+      value: '{{QUANDL_TOKEN}}'
+    resources:
+    - name: datasets-databasecode-datasetcode
+      path: /datasets/{databaseCode}/{datasetCode}
+      operations:
+      - name: getdataset
+        method: GET
+        description: Get a time-series dataset
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Number of rows to return (0 returns all)
+        - name: column_index
+          in: query
+          type: integer
+          description: Request a specific column (1-based index)
+        - name: start_date
+          in: query
+          type: string
+          description: Retrieve data rows on and after this date (YYYY-MM-DD)
+        - name: end_date
+          in: query
+          type: string
+          description: Retrieve data rows up to and including this date (YYYY-MM-DD)
+        - name: order
+          in: query
+          type: string
+          description: Return data in ascending or descending date order
+        - name: collapse
+          in: query
+          type: string
+          description: Frequency to collapse data to
+        - name: transform
+          in: query
+          type: string
+          description: Mathematical transformation to apply to values
+        - name: api_key
+          in: query
+          type: string
+          description: Your Nasdaq Data Link API key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: datasets-databasecode-datasetcode-metadata
+      path: /datasets/{databaseCode}/{datasetCode}/metadata
+      operations:
+      - name: getdatasetmetadata
+        method: GET
+        description: Get dataset metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: databases
+      path: /databases
+      operations:
+      - name: listdatabases
+        method: GET
+        description: List databases
+        inputParameters:
+        - name: per_page
+          in: query
+          type: integer
+        - name: page
+          in: query
+          type: integer
+        - name: query
+          in: query
+          type: string
+          description: Search query for database name or description
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: databases-databasecode
+      path: /databases/{databaseCode}
+      operations:
+      - name: getdatabase
+        method: GET
+        description: Get database metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: databases-databasecode-datasets
+      path: /databases/{databaseCode}/datasets
+      operations:
+      - name: listdatabasedatasets
+        method: GET
+        description: List datasets in a database
+        inputParameters:
+        - name: per_page
+          in: query
+          type: integer
+        - name: page
+          in: query
+          type: integer
+        - name: query
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: datatables-datatablescode
+      path: /datatables/{datatablesCode}
+      operations:
+      - name: getdatatable
+        method: GET
+        description: Query a datatable
+        inputParameters:
+        - name: datatablesCode
+          in: path
+          type: string
+          required: true
+          description: Database code and datatable code joined by slash (e.g. ZACKS/FC)
+        - name: qopts.columns
+          in: query
+          type: string
+          description: Comma-separated column names to return
+        - name: qopts.per_page
+          in: query
+          type: integer
+          description: Number of rows per page (max 10000)
+        - name: qopts.cursor_id
+          in: query
+          type: string
+          description: Cursor ID for pagination from previous response
+        - name: qopts.export
+          in: query
+          type: boolean
+          description: Set to true to get a download link for full dataset
+        - name: api_key
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: quandl-rest
+    description: REST adapter for Nasdaq Data Link Time-Series REST API.
+    resources:
+    - path: /datasets/{databaseCode}/{datasetCode}
+      name: getdataset
+      operations:
+      - method: GET
+        name: getdataset
+        description: Get a time-series dataset
+        call: quandl.getdataset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /datasets/{databaseCode}/{datasetCode}/metadata
+      name: getdatasetmetadata
+      operations:
+      - method: GET
+        name: getdatasetmetadata
+        description: Get dataset metadata
+        call: quandl.getdatasetmetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /databases
+      name: listdatabases
+      operations:
+      - method: GET
+        name: listdatabases
+        description: List databases
+        call: quandl.listdatabases
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /databases/{databaseCode}
+      name: getdatabase
+      operations:
+      - method: GET
+        name: getdatabase
+        description: Get database metadata
+        call: quandl.getdatabase
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /databases/{databaseCode}/datasets
+      name: listdatabasedatasets
+      operations:
+      - method: GET
+        name: listdatabasedatasets
+        description: List datasets in a database
+        call: quandl.listdatabasedatasets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /datatables/{datatablesCode}
+      name: getdatatable
+      operations:
+      - method: GET
+        name: getdatatable
+        description: Query a datatable
+        call: quandl.getdatatable
+        with:
+          datatablesCode: rest.datatablesCode
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: quandl-mcp
+    transport: http
+    description: MCP adapter for Nasdaq Data Link Time-Series REST API for AI agent use.
+    tools:
+    - name: getdataset
+      description: Get a time-series dataset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quandl.getdataset
+      with:
+        limit: tools.limit
+        column_index: tools.column_index
+        start_date: tools.start_date
+        end_date: tools.end_date
+        order: tools.order
+        collapse: tools.collapse
+        transform: tools.transform
+        api_key: tools.api_key
+      inputParameters:
+      - name: limit
+        type: integer
+        description: Number of rows to return (0 returns all)
+      - name: column_index
+        type: integer
+        description: Request a specific column (1-based index)
+      - name: start_date
+        type: string
+        description: Retrieve data rows on and after this date (YYYY-MM-DD)
+      - name: end_date
+        type: string
+        description: Retrieve data rows up to and including this date (YYYY-MM-DD)
+      - name: order
+        type: string
+        description: Return data in ascending or descending date order
+      - name: collapse
+        type: string
+        description: Frequency to collapse data to
+      - name: transform
+        type: string
+        description: Mathematical transformation to apply to values
+      - name: api_key
+        type: string
+        description: Your Nasdaq Data Link API key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdatasetmetadata
+      description: Get dataset metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quandl.getdatasetmetadata
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdatabases
+      description: List databases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quandl.listdatabases
+      with:
+        per_page: tools.per_page
+        page: tools.page
+        query: tools.query
+      inputParameters:
+      - name: per_page
+        type: integer
+        description: per_page
+      - name: page
+        type: integer
+        description: page
+      - name: query
+        type: string
+        description: Search query for database name or description
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdatabase
+      description: Get database metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quandl.getdatabase
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdatabasedatasets
+      description: List datasets in a database
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quandl.listdatabasedatasets
+      with:
+        per_page: tools.per_page
+        page: tools.page
+        query: tools.query
+      inputParameters:
+      - name: per_page
+        type: integer
+        description: per_page
+      - name: page
+        type: integer
+        description: page
+      - name: query
+        type: string
+        description: query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdatatable
+      description: Query a datatable
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: quandl.getdatatable
+      with:
+        datatablesCode: tools.datatablesCode
+        qopts.columns: tools.qopts.columns
+        qopts.per_page: tools.qopts.per_page
+        qopts.cursor_id: tools.qopts.cursor_id
+        qopts.export: tools.qopts.export
+        api_key: tools.api_key
+      inputParameters:
+      - name: datatablesCode
+        type: string
+        description: Database code and datatable code joined by slash (e.g. ZACKS/FC)
+        required: true
+      - name: qopts.columns
+        type: string
+        description: Comma-separated column names to return
+      - name: qopts.per_page
+        type: integer
+        description: Number of rows per page (max 10000)
+      - name: qopts.cursor_id
+        type: string
+        description: Cursor ID for pagination from previous response
+      - name: qopts.export
+        type: boolean
+        description: Set to true to get a download link for full dataset
+      - name: api_key
+        type: string
+        description: api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    QUANDL_TOKEN: QUANDL_TOKEN
