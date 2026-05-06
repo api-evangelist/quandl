@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,146 +9,70 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Quandl (Nasdaq Data Link)
 providerId: quandl
-publisherName: Quandl (Nasdaq Data Link)
-serviceCategory: API
+publisherName: Nasdaq, Inc.
+serviceCategory: Market Data
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Finance
   - Market Data
-  - Economic Data
-  - Time Series
-  - Streaming
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Quandl (Nasdaq Data Link) API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+notes: Nasdaq Data Link does not publish a public per-dataset price list or a usage telemetry API;
+  premium dataset prices are surfaced inside the data.nasdaq.com catalog and enterprise pricing is
+  contracted via Nasdaq sales. FOCUS columns are populated at the publisher level; per-dataset meters
+  are listed but rates are intentionally left unreconciled.
+description: FOCUS-aligned FinOps for Nasdaq Data Link (Quandl) - per-dataset subscription fees plus
+  enterprise multi-dataset contracts; pricing is set inside the catalog rather than a published tier
+  table.
+sources:
+  - https://data.nasdaq.com/
+  - https://docs.data.nasdaq.com/
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Subscription (Per-Dataset)
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
+    - Usage
 focusColumns:
-  ServiceName: Quandl (Nasdaq Data Link)
-  ServiceCategory: Developer Tools / API
-  ProviderName: Quandl (Nasdaq Data Link)
-  PublisherName: Quandl (Nasdaq Data Link)
-  InvoiceIssuerName: Quandl (Nasdaq Data Link)
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceName: Nasdaq Data Link
+  ServiceCategory: Market Data
+  ProviderName: Nasdaq Data Link
+  PublisherName: Nasdaq, Inc.
+  InvoiceIssuerName: Nasdaq, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
+  - name: dataset_subscription
+    description: Per-dataset subscription fee for premium Nasdaq Data Link content; rate is set on
+      the data.nasdaq.com product page for each dataset.
+    unit: month
+    aggregation: sum
+    dimensions:
+      - dataset
+      - account
   - name: api_requests
-    description: Count of billable API requests
+    description: REST and Streaming API requests against the subscribed datasets; subject to per-account
+      throttling rather than per-call billing.
     unit: request
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Nasdaq Data Link REST API (Time-Series)
-    baseURL: https://data.nasdaq.com/api/v3
-    tags:
-      - Finance
-      - Economic Data
-      - Time Series
-      - Market Data
-      - REST
-    serviceName: Nasdaq Data Link REST API (Time-Series)
-    serviceCategory: API
-  - name: Nasdaq Data Link Tables REST API
-    baseURL: https://data.nasdaq.com/api/v3
-    tags:
-      - Finance
-      - Market Data
-      - Tables
-      - REST
-    serviceName: Nasdaq Data Link Tables REST API
-    serviceCategory: API
-  - name: Nasdaq Cloud Data Service (NCDS) Streaming API
-    baseURL: ''
-    tags:
-      - Finance
-      - Market Data
-      - Streaming
-      - Real-time
-      - REST
-    serviceName: Nasdaq Cloud Data Service (NCDS) Streaming API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - dataset
+      - api_key
+principles:
+  - name: Visibility
+    description: Track subscribed datasets and per-account API key usage through the data.nasdaq.com
+      account dashboard; export invoice line items into the internal cost-management system.
+  - name: Allocation
+    description: Allocate per-dataset subscription fees against the analytics or trading desk consuming
+      each dataset; tag API keys per consuming application.
+  - name: Optimization
+    description: Audit subscribed datasets quarterly; cancel datasets that no longer drive analyses,
+      and consolidate access against an enterprise contract when multiple desks subscribe to the same
+      provider.
+  - name: Accountability
+    description: Data leadership owns the dataset catalog; finance reviews per-dataset spend at renewal.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
