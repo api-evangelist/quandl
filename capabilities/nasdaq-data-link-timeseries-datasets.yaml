@@ -1,0 +1,155 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Nasdaq Data Link Time-Series REST API — Datasets
+  description: 'Nasdaq Data Link Time-Series REST API — Datasets. 2 operations. Lead operation: Get a time-series dataset.
+    Self-contained Naftiko capability covering one Quandl business surface.'
+  tags:
+  - Quandl
+  - Datasets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    QUANDL_API_KEY: QUANDL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nasdaq-data-link-timeseries-datasets
+    baseUri: https://data.nasdaq.com/api/v3
+    description: Nasdaq Data Link Time-Series REST API — Datasets business capability. Self-contained, no shared references.
+    resources:
+    - name: datasets-databaseCode-datasetCode
+      path: /datasets/{databaseCode}/{datasetCode}
+      operations:
+      - name: getdataset
+        method: GET
+        description: Get a time-series dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Number of rows to return (0 returns all)
+        - name: column_index
+          in: query
+          type: integer
+          description: Request a specific column (1-based index)
+        - name: start_date
+          in: query
+          type: string
+          description: Retrieve data rows on and after this date (YYYY-MM-DD)
+        - name: end_date
+          in: query
+          type: string
+          description: Retrieve data rows up to and including this date (YYYY-MM-DD)
+        - name: order
+          in: query
+          type: string
+          description: Return data in ascending or descending date order
+        - name: collapse
+          in: query
+          type: string
+          description: Frequency to collapse data to
+        - name: transform
+          in: query
+          type: string
+          description: Mathematical transformation to apply to values
+        - name: api_key
+          in: query
+          type: string
+          description: Your Nasdaq Data Link API key
+    - name: datasets-databaseCode-datasetCode-metadata
+      path: /datasets/{databaseCode}/{datasetCode}/metadata
+      operations:
+      - name: getdatasetmetadata
+        method: GET
+        description: Get dataset metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.QUANDL_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: nasdaq-data-link-timeseries-datasets-rest
+    port: 8080
+    description: REST adapter for Nasdaq Data Link Time-Series REST API — Datasets. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/datasets/{databasecode}/{datasetcode}
+      name: datasets-databasecode-datasetcode
+      description: REST surface for datasets-databaseCode-datasetCode.
+      operations:
+      - method: GET
+        name: getdataset
+        description: Get a time-series dataset
+        call: nasdaq-data-link-timeseries-datasets.getdataset
+        with:
+          limit: rest.limit
+          column_index: rest.column_index
+          start_date: rest.start_date
+          end_date: rest.end_date
+          order: rest.order
+          collapse: rest.collapse
+          transform: rest.transform
+          api_key: rest.api_key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{databasecode}/{datasetcode}/metadata
+      name: datasets-databasecode-datasetcode-metadata
+      description: REST surface for datasets-databaseCode-datasetCode-metadata.
+      operations:
+      - method: GET
+        name: getdatasetmetadata
+        description: Get dataset metadata
+        call: nasdaq-data-link-timeseries-datasets.getdatasetmetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nasdaq-data-link-timeseries-datasets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Nasdaq Data Link Time-Series REST API — Datasets. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-time-series-dataset
+      description: Get a time-series dataset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nasdaq-data-link-timeseries-datasets.getdataset
+      with:
+        limit: tools.limit
+        column_index: tools.column_index
+        start_date: tools.start_date
+        end_date: tools.end_date
+        order: tools.order
+        collapse: tools.collapse
+        transform: tools.transform
+        api_key: tools.api_key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dataset-metadata
+      description: Get dataset metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nasdaq-data-link-timeseries-datasets.getdatasetmetadata
+      outputParameters:
+      - type: object
+        mapping: $.
