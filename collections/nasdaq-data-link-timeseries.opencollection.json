@@ -1,0 +1,270 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nasdaq Data Link Time-Series REST API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a time-series dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/datasets/:databaseCode/:datasetCode",
+            "params": [
+              {
+                "name": "databaseCode",
+                "value": "",
+                "type": "path",
+                "description": "Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+              },
+              {
+                "name": "datasetCode",
+                "value": "",
+                "type": "path",
+                "description": "Dataset code within the database (e.g., GDP, AAPL)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to return (0 returns all)"
+              },
+              {
+                "name": "column_index",
+                "value": "",
+                "type": "query",
+                "description": "Request a specific column (1-based index)"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Retrieve data rows on and after this date (YYYY-MM-DD)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "Retrieve data rows up to and including this date (YYYY-MM-DD)"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Return data in ascending or descending date order"
+              },
+              {
+                "name": "collapse",
+                "value": "",
+                "type": "query",
+                "description": "Frequency to collapse data to"
+              },
+              {
+                "name": "transform",
+                "value": "",
+                "type": "query",
+                "description": "Mathematical transformation to apply to values"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "Your Nasdaq Data Link API key"
+              }
+            ]
+          },
+          "docs": "Returns time-series data from a Nasdaq Data Link dataset. Supports date range filtering, column selection, frequency transformation, and return type selection (JSON, XML, CSV)."
+        },
+        {
+          "info": {
+            "name": "Get dataset metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/datasets/:databaseCode/:datasetCode/metadata",
+            "params": [
+              {
+                "name": "databaseCode",
+                "value": "",
+                "type": "path",
+                "description": "Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+              },
+              {
+                "name": "datasetCode",
+                "value": "",
+                "type": "path",
+                "description": "Dataset code within the database (e.g., GDP, AAPL)"
+              }
+            ]
+          },
+          "docs": "Returns metadata for a dataset including column names, description, and date range."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Databases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/databases",
+            "params": [
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search query for database name or description"
+              }
+            ]
+          },
+          "docs": "Returns a list of all available Nasdaq Data Link databases with metadata."
+        },
+        {
+          "info": {
+            "name": "Get database metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/databases/:databaseCode",
+            "params": [
+              {
+                "name": "databaseCode",
+                "value": "",
+                "type": "path",
+                "description": "Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+              }
+            ]
+          },
+          "docs": "Returns metadata for a specific Nasdaq Data Link database."
+        },
+        {
+          "info": {
+            "name": "List datasets in a database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/databases/:databaseCode/datasets",
+            "params": [
+              {
+                "name": "databaseCode",
+                "value": "",
+                "type": "path",
+                "description": "Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all datasets available in a specific database."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query a datatable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/datatables/:datatablesCode",
+            "params": [
+              {
+                "name": "datatablesCode",
+                "value": "",
+                "type": "path",
+                "description": "Database code and datatable code joined by slash (e.g. ZACKS/FC)"
+              },
+              {
+                "name": "qopts.columns",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated column names to return"
+              },
+              {
+                "name": "qopts.per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows per page (max 10000)"
+              },
+              {
+                "name": "qopts.cursor_id",
+                "value": "",
+                "type": "query",
+                "description": "Cursor ID for pagination from previous response"
+              },
+              {
+                "name": "qopts.export",
+                "value": "",
+                "type": "query",
+                "description": "Set to true to get a download link for full dataset"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns rows from a Nasdaq Data Link datatable (tabular dataset). Supports row-level filtering, column selection, and pagination using cursor-based pagination. Maximum 10,000 rows per call."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
