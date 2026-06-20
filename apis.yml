@@ -5,7 +5,7 @@ description: >-
   time-series datasets, tabular datasets, and real-time market data feeds. Datasets cover stock prices, economic
   indicators, interest rates, commodities, equity fundamentals, options data, and alternative data sets.
 type: Index
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/quandl/refs/heads/main/apis.yml
 tags:
   - Finance
@@ -23,7 +23,7 @@ apis:
       Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets
       including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats.
       Authenticated users receive up to 50,000 calls per day.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.data.nasdaq.com/
     baseURL: https://data.nasdaq.com/api/v3
     tags:
@@ -51,7 +51,7 @@ apis:
       Nasdaq Data Link Tables API provides access to tabular financial datasets including equity fundamentals, options
       data, and alternative data sets. Limited to 10,000 rows per call with pagination support up to 1,000,000 rows via
       the Python client.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.data.nasdaq.com/
     baseURL: https://data.nasdaq.com/api/v3
     tags:
@@ -69,7 +69,7 @@ apis:
     description: >-
       Nasdaq Cloud Data Service (NCDS) provides streaming and REST APIs for real-time and delayed market data delivery
       including equities, options, and fixed income from Nasdaq exchange feeds.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://github.com/Nasdaq/NasdaqCloudDataService-REST-API
     tags:
       - Finance
