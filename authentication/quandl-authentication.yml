@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/nasdaq-data-link-timeseries-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: apiKeyQuery
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: Nasdaq Data Link API key passed as query parameter
+  sources:
+  - openapi/nasdaq-data-link-timeseries-openapi.yml
+- name: apiKeyHeader
+  type: apiKey
+  in: header
+  parameter: X-Api-Token
+  description: Nasdaq Data Link API key passed as header
+  sources:
+  - openapi/nasdaq-data-link-timeseries-openapi.yml

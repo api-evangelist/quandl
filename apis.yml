@@ -85,6 +85,10 @@ apis:
       - url: https://github.com/Nasdaq/NasdaqCloudDataService-SDK-Java
         type: SDKs
 common:
+  - type: DomainSecurity
+    url: security/quandl-domain-security.yml
+  - type: Authentication
+    url: authentication/quandl-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/quandl
   - url: https://data.nasdaq.com/
