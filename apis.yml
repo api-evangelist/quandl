@@ -85,6 +85,8 @@ apis:
       - url: https://github.com/Nasdaq/NasdaqCloudDataService-SDK-Java
         type: SDKs
 common:
+  - type: AgenticAccess
+    url: agentic-access/quandl-agentic-access.yml
   - type: DomainSecurity
     url: security/quandl-domain-security.yml
   - type: Authentication

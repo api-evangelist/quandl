@@ -1,0 +1,74 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/nasdaq-data-link-timeseries-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 6
+  by_action_class:
+    connected: 6
+  by_consequence:
+    read: 6
+  human_in_the_loop_required: 0
+operations:
+- path: /datasets/{databaseCode}/{datasetCode}
+  method: get
+  operationId: getDataset
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /datasets/{databaseCode}/{datasetCode}/metadata
+  method: get
+  operationId: getDatasetMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /databases
+  method: get
+  operationId: listDatabases
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /databases/{databaseCode}
+  method: get
+  operationId: getDatabase
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /databases/{databaseCode}/datasets
+  method: get
+  operationId: listDatabaseDatasets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /datatables/{datatablesCode}
+  method: get
+  operationId: getDataTable
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
