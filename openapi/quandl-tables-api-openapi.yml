@@ -1,0 +1,171 @@
+openapi: 3.1.0
+info:
+  title: Nasdaq Data Link Time-Series REST Databases Tables API
+  description: Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats. Authenticated users receive up to 50,000 API calls per day.
+  version: 3.0.0
+  contact:
+    name: Nasdaq Data Link Support
+    url: https://docs.data.nasdaq.com/docs/contact-support
+  license:
+    name: Nasdaq Data Link Terms of Use
+    url: https://data.nasdaq.com/terms
+servers:
+- url: https://data.nasdaq.com/api/v3
+  description: Nasdaq Data Link API
+security:
+- apiKeyQuery: []
+- apiKeyHeader: []
+tags:
+- name: Tables
+  description: Tabular dataset retrieval
+paths:
+  /datatables/{datatablesCode}:
+    get:
+      operationId: getDataTable
+      summary: Query a datatable
+      description: Returns rows from a Nasdaq Data Link datatable (tabular dataset). Supports row-level filtering, column selection, and pagination using cursor-based pagination. Maximum 10,000 rows per call.
+      tags:
+      - Tables
+      parameters:
+      - name: datatablesCode
+        in: path
+        required: true
+        description: Database code and datatable code joined by slash (e.g. ZACKS/FC)
+        schema:
+          type: string
+          example: ZACKS/FC
+      - name: qopts.columns
+        in: query
+        description: Comma-separated column names to return
+        schema:
+          type: string
+      - name: qopts.per_page
+        in: query
+        description: Number of rows per page (max 10000)
+        schema:
+          type: integer
+          default: 100
+          maximum: 10000
+      - name: qopts.cursor_id
+        in: query
+        description: Cursor ID for pagination from previous response
+        schema:
+          type: string
+      - name: qopts.export
+        in: query
+        description: Set to true to get a download link for full dataset
+        schema:
+          type: boolean
+      - name: api_key
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Datatable rows
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatatableResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  schemas:
+    DatatableResponse:
+      type: object
+      properties:
+        datatable:
+          type: object
+          properties:
+            data:
+              type: array
+              description: Array of data rows
+              items:
+                type: array
+                items:
+                  oneOf:
+                  - type: string
+                  - type: number
+                  - type: 'null'
+            columns:
+              type: array
+              description: Column metadata
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+        meta:
+          type: object
+          properties:
+            next_cursor_id:
+              type: string
+              nullable: true
+              description: Cursor ID for next page; null if no more data
+    QuandlError:
+      type: object
+      properties:
+        quandl_error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+  responses:
+    NotFound:
+      description: Dataset or database not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        X-RateLimit-Limit:
+          schema:
+            type: integer
+          description: Number of requests allowed per day
+        X-RateLimit-Remaining:
+          schema:
+            type: integer
+          description: Number of requests remaining today
+        X-RateLimit-Reset:
+          schema:
+            type: integer
+          description: Epoch timestamp when limit resets
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    Unauthorized:
+      description: Invalid or missing API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Nasdaq Data Link API key passed as query parameter
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Api-Token
+      description: Nasdaq Data Link API key passed as header

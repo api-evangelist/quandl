@@ -1,0 +1,312 @@
+openapi: 3.1.0
+info:
+  title: Nasdaq Data Link Time-Series REST Databases Datasets API
+  description: Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats. Authenticated users receive up to 50,000 API calls per day.
+  version: 3.0.0
+  contact:
+    name: Nasdaq Data Link Support
+    url: https://docs.data.nasdaq.com/docs/contact-support
+  license:
+    name: Nasdaq Data Link Terms of Use
+    url: https://data.nasdaq.com/terms
+servers:
+- url: https://data.nasdaq.com/api/v3
+  description: Nasdaq Data Link API
+security:
+- apiKeyQuery: []
+- apiKeyHeader: []
+tags:
+- name: Datasets
+  description: Time-series dataset retrieval
+paths:
+  /datasets/{databaseCode}/{datasetCode}:
+    get:
+      operationId: getDataset
+      summary: Get a time-series dataset
+      description: Returns time-series data from a Nasdaq Data Link dataset. Supports date range filtering, column selection, frequency transformation, and return type selection (JSON, XML, CSV).
+      tags:
+      - Datasets
+      parameters:
+      - $ref: '#/components/parameters/DatabaseCode'
+      - $ref: '#/components/parameters/DatasetCode'
+      - name: limit
+        in: query
+        description: Number of rows to return (0 returns all)
+        schema:
+          type: integer
+          default: 100
+          maximum: 10000
+      - name: column_index
+        in: query
+        description: Request a specific column (1-based index)
+        schema:
+          type: integer
+      - name: start_date
+        in: query
+        description: Retrieve data rows on and after this date (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        description: Retrieve data rows up to and including this date (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+      - name: order
+        in: query
+        description: Return data in ascending or descending date order
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: collapse
+        in: query
+        description: Frequency to collapse data to
+        schema:
+          type: string
+          enum:
+          - none
+          - daily
+          - weekly
+          - monthly
+          - quarterly
+          - annual
+          default: none
+      - name: transform
+        in: query
+        description: Mathematical transformation to apply to values
+        schema:
+          type: string
+          enum:
+          - none
+          - diff
+          - rdiff
+          - rdiff_from
+          - cumul
+          - normalize
+          default: none
+      - name: api_key
+        in: query
+        description: Your Nasdaq Data Link API key
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Dataset data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /datasets/{databaseCode}/{datasetCode}/metadata:
+    get:
+      operationId: getDatasetMetadata
+      summary: Get dataset metadata
+      description: Returns metadata for a dataset including column names, description, and date range.
+      tags:
+      - Datasets
+      parameters:
+      - $ref: '#/components/parameters/DatabaseCode'
+      - $ref: '#/components/parameters/DatasetCode'
+      responses:
+        '200':
+          description: Dataset metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetMetadataResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    DatasetResponse:
+      type: object
+      properties:
+        dataset:
+          $ref: '#/components/schemas/DatasetWithData'
+    DatasetWithData:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Internal dataset ID
+        dataset_code:
+          type: string
+        database_code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        refreshed_at:
+          type: string
+          format: date-time
+        newest_available_date:
+          type: string
+          format: date
+        oldest_available_date:
+          type: string
+          format: date
+        column_names:
+          type: array
+          description: Column names in order matching data rows
+          items:
+            type: string
+          example:
+          - Date
+          - Open
+          - High
+          - Low
+          - Close
+          - Volume
+          - Adj. Close
+        frequency:
+          type: string
+          enum:
+          - annual
+          - quarterly
+          - monthly
+          - weekly
+          - daily
+        type:
+          type: string
+          enum:
+          - Time Series
+        premium:
+          type: boolean
+          description: True if this is a premium (paid) dataset
+        data:
+          type: array
+          description: Array of data rows; each row matches column_names order
+          items:
+            type: array
+            items:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+    DatasetMetadataResponse:
+      type: object
+      properties:
+        dataset:
+          type: object
+          properties:
+            id:
+              type: integer
+            dataset_code:
+              type: string
+            database_code:
+              type: string
+            name:
+              type: string
+            description:
+              type: string
+            refreshed_at:
+              type: string
+              format: date-time
+            newest_available_date:
+              type: string
+              format: date
+            oldest_available_date:
+              type: string
+              format: date
+            column_names:
+              type: array
+              items:
+                type: string
+            frequency:
+              type: string
+            type:
+              type: string
+            premium:
+              type: boolean
+    QuandlError:
+      type: object
+      properties:
+        quandl_error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+  responses:
+    NotFound:
+      description: Dataset or database not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        X-RateLimit-Limit:
+          schema:
+            type: integer
+          description: Number of requests allowed per day
+        X-RateLimit-Remaining:
+          schema:
+            type: integer
+          description: Number of requests remaining today
+        X-RateLimit-Reset:
+          schema:
+            type: integer
+          description: Epoch timestamp when limit resets
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    Unauthorized:
+      description: Invalid or missing API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+  parameters:
+    DatabaseCode:
+      name: databaseCode
+      in: path
+      required: true
+      description: Database code (e.g., FRED, WIKI, CHRIS, BCOM)
+      schema:
+        type: string
+    DatasetCode:
+      name: datasetCode
+      in: path
+      required: true
+      description: Dataset code within the database (e.g., GDP, AAPL)
+      schema:
+        type: string
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Nasdaq Data Link API key passed as query parameter
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Api-Token
+      description: Nasdaq Data Link API key passed as header
