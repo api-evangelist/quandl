@@ -1,0 +1,18 @@
+{
+  "provider": "quandl",
+  "sources": [
+    "quandl-databases-api-openapi.yml",
+    "quandl-datasets-api-openapi.yml",
+    "quandl-tables-api-openapi.yml"
+  ],
+  "outputs": [
+    "quandl-databases-api-openapi.yml",
+    "quandl-datasets-api-openapi.yml",
+    "quandl-tables-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
