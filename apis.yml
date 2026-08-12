@@ -160,7 +160,7 @@ common:
     type: SDKs
   - url: https://github.com/Nasdaq/NasdaqCloudDataService-SDK-Java
     type: SDKs
-  - url: openapi/nasdaq-data-link-timeseries-openapi.yml
+  - url: openapi/_original/nasdaq-data-link-timeseries-openapi.yml
     type: OpenAPI
   - url: json-schema/nasdaq-data-link-dataset-schema.json
     type: JSONSchema
