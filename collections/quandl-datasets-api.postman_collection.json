@@ -1,0 +1,782 @@
+{
+  "item": [
+    {
+      "id": "355eeba7-58ca-42f7-8d8b-a31c009e9f41",
+      "name": "Datasets",
+      "description": {
+        "content": "Time-series dataset retrieval",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "16312eb0-a064-4229-b647-4cc1d1bc0c6c",
+          "name": "Get a time-series dataset",
+          "request": {
+            "name": "Get a time-series dataset",
+            "description": {
+              "content": "Returns time-series data from a Nasdaq Data Link dataset. Supports date range filtering, column selection, frequency transformation, and return type selection (JSON, XML, CSV).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "datasets",
+                ":databaseCode",
+                ":datasetCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of rows to return (0 returns all)"
+                },
+                {
+                  "disabled": false,
+                  "key": "column_index",
+                  "value": "<integer>",
+                  "description": "Request a specific column (1-based index)"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Retrieve data rows on and after this date (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "Retrieve data rows up to and including this date (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc",
+                  "description": "Return data in ascending or descending date order"
+                },
+                {
+                  "disabled": false,
+                  "key": "collapse",
+                  "value": "none",
+                  "description": "Frequency to collapse data to"
+                },
+                {
+                  "disabled": false,
+                  "key": "transform",
+                  "value": "none",
+                  "description": "Mathematical transformation to apply to values"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "Your Nasdaq Data Link API key"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "databaseCode",
+                  "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datasetCode",
+                  "description": "(Required) Dataset code within the database (e.g., GDP, AAPL)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6b74877-fd2f-4bb5-b6af-e00d05de173f",
+              "name": "Dataset data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":databaseCode",
+                    ":datasetCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "collapse",
+                      "value": "none"
+                    },
+                    {
+                      "key": "transform",
+                      "value": "none"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "databaseCode",
+                      "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datasetCode",
+                      "description": "(Required) Dataset code within the database (e.g., GDP, AAPL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": 9336,\n    \"dataset_code\": \"string\",\n    \"database_code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"refreshed_at\": \"2014-03-21T04:41:17.966Z\",\n    \"newest_available_date\": \"2010-08-21\",\n    \"oldest_available_date\": \"1972-07-15\",\n    \"column_names\": [\n      \"Date\",\n      \"Open\",\n      \"High\",\n      \"Low\",\n      \"Close\",\n      \"Volume\",\n      \"Adj. Close\"\n    ],\n    \"frequency\": \"monthly\",\n    \"type\": \"Time Series\",\n    \"premium\": false,\n    \"data\": [\n      [\n        \"string\",\n        \"string\"\n      ],\n      [\n        \"string\",\n        \"string\"\n      ]\n    ],\n    \"start_date\": \"2016-09-15\",\n    \"end_date\": \"2015-02-16\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f883e4aa-d340-436d-b206-d58dc528155d",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":databaseCode",
+                    ":datasetCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "collapse",
+                      "value": "none"
+                    },
+                    {
+                      "key": "transform",
+                      "value": "none"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "databaseCode",
+                      "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datasetCode",
+                      "description": "(Required) Dataset code within the database (e.g., GDP, AAPL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "221b9761-8c89-4cff-a5c9-caa540feee1b",
+              "name": "Invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":databaseCode",
+                    ":datasetCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "collapse",
+                      "value": "none"
+                    },
+                    {
+                      "key": "transform",
+                      "value": "none"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "databaseCode",
+                      "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datasetCode",
+                      "description": "(Required) Dataset code within the database (e.g., GDP, AAPL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28141495-a8f0-4229-93fa-c2e4cb22c87e",
+              "name": "Dataset or database not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":databaseCode",
+                    ":datasetCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "collapse",
+                      "value": "none"
+                    },
+                    {
+                      "key": "transform",
+                      "value": "none"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "databaseCode",
+                      "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datasetCode",
+                      "description": "(Required) Dataset code within the database (e.g., GDP, AAPL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9244a3f1-4b19-4ad6-94d9-458d1cc54533",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":databaseCode",
+                    ":datasetCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "collapse",
+                      "value": "none"
+                    },
+                    {
+                      "key": "transform",
+                      "value": "none"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "databaseCode",
+                      "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datasetCode",
+                      "description": "(Required) Dataset code within the database (e.g., GDP, AAPL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of requests allowed per day",
+                  "key": "X-RateLimit-Limit",
+                  "value": "4465"
+                },
+                {
+                  "disabled": false,
+                  "description": "Number of requests remaining today",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "4465"
+                },
+                {
+                  "disabled": false,
+                  "description": "Epoch timestamp when limit resets",
+                  "key": "X-RateLimit-Reset",
+                  "value": "4465"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd9865a8-9806-4d19-a569-d983a5768c8f",
+          "name": "Get dataset metadata",
+          "request": {
+            "name": "Get dataset metadata",
+            "description": {
+              "content": "Returns metadata for a dataset including column names, description, and date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "datasets",
+                ":databaseCode",
+                ":datasetCode",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "databaseCode",
+                  "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datasetCode",
+                  "description": "(Required) Dataset code within the database (e.g., GDP, AAPL)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed0501ae-803f-4d9d-9fee-fbeb40ff3935",
+              "name": "Dataset metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":databaseCode",
+                    ":datasetCode",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "databaseCode",
+                      "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datasetCode",
+                      "description": "(Required) Dataset code within the database (e.g., GDP, AAPL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": 6041,\n    \"dataset_code\": \"string\",\n    \"database_code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"refreshed_at\": \"1969-02-25T21:13:25.148Z\",\n    \"newest_available_date\": \"1993-05-23\",\n    \"oldest_available_date\": \"1962-10-19\",\n    \"column_names\": [\n      \"string\",\n      \"string\"\n    ],\n    \"frequency\": \"string\",\n    \"type\": \"string\",\n    \"premium\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "160f0c12-2bd0-44e6-b668-c187279608ee",
+              "name": "Dataset or database not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":databaseCode",
+                    ":datasetCode",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "databaseCode",
+                      "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datasetCode",
+                      "description": "(Required) Dataset code within the database (e.g., GDP, AAPL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.nasdaq.com/api/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d9dc2fab-9066-4234-9e0a-39773f9ec69f",
+    "name": "Nasdaq Data Link Time-Series REST Databases Datasets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats. Authenticated users receive up to 50,000 API calls per day.\n\nContact Support:\n Name: Nasdaq Data Link Support",
+      "type": "text/plain"
+    }
+  }
+}

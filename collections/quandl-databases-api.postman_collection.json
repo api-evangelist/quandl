@@ -1,0 +1,470 @@
+{
+  "item": [
+    {
+      "id": "2ec31c9c-b003-4a12-b0d3-6c3a0ed34e65",
+      "name": "Databases",
+      "description": {
+        "content": "Database catalog and metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e02efcd6-2075-43ef-b60b-f1f3026c81ee",
+          "name": "List databases",
+          "request": {
+            "name": "List databases",
+            "description": {
+              "content": "Returns a list of all available Nasdaq Data Link databases with metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "databases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Search query for database name or description"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "262d0964-42b2-44f7-8aec-cf3ff69252fd",
+              "name": "Database list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"databases\": [\n    {\n      \"id\": 1485,\n      \"name\": \"string\",\n      \"database_code\": \"string\",\n      \"description\": \"string\",\n      \"datasets_count\": 1916,\n      \"downloads\": 6401,\n      \"premium\": false,\n      \"image\": \"http://KHqegvxyvfwLrINfWusushmaF.pfL81MyYaQuoL4QL\",\n      \"favorite\": true,\n      \"url_name\": \"string\"\n    },\n    {\n      \"id\": 515,\n      \"name\": \"string\",\n      \"database_code\": \"string\",\n      \"description\": \"string\",\n      \"datasets_count\": 5028,\n      \"downloads\": 4101,\n      \"premium\": false,\n      \"image\": \"https://YOVSsSJIkivhJQmQaKETrNtVryxq.ttmlOVDmqEQEHDbubwp.NWVGYdCR.8Cx02x--sITCVcAOQQg545G\",\n      \"favorite\": true,\n      \"url_name\": \"string\"\n    }\n  ],\n  \"meta\": {\n    \"query\": \"string\",\n    \"per_page\": 2866,\n    \"current_page\": 1899,\n    \"prev_page\": 5049,\n    \"next_page\": 5024,\n    \"total_count\": 8048\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec6a1b2f-b2c8-4fb7-b601-d5b54d4f44ae",
+              "name": "Invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80b95efe-23cf-4f7e-880c-9f394c7599c2",
+          "name": "Get database metadata",
+          "request": {
+            "name": "Get database metadata",
+            "description": {
+              "content": "Returns metadata for a specific Nasdaq Data Link database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "databases",
+                ":databaseCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "databaseCode",
+                  "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "240606fa-01d3-47e9-bc0b-268a099a2773",
+              "name": "Database metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":databaseCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "databaseCode",
+                      "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"database\": {\n    \"id\": 8215,\n    \"name\": \"string\",\n    \"database_code\": \"string\",\n    \"description\": \"string\",\n    \"datasets_count\": 3748,\n    \"downloads\": 1788,\n    \"premium\": false,\n    \"image\": \"https://DZX.vzRf.Zqqm,j.OYAf8bdmteCfjUHLxd4,BAbjQ\",\n    \"favorite\": true,\n    \"url_name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4985903-0472-4afe-83a1-d79370784419",
+              "name": "Dataset or database not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":databaseCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "databaseCode",
+                      "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c60af732-57bb-4b54-a72c-d60300d0208c",
+          "name": "List datasets in a database",
+          "request": {
+            "name": "List datasets in a database",
+            "description": {
+              "content": "Returns all datasets available in a specific database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "databases",
+                ":databaseCode",
+                "datasets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "databaseCode",
+                  "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02a2b8cc-b1ad-44e5-a6ca-8a496522ca00",
+              "name": "Dataset list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "databases",
+                    ":databaseCode",
+                    "datasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "databaseCode",
+                      "description": "(Required) Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"datasets\": [\n    {\n      \"id\": 6285,\n      \"dataset_code\": \"string\",\n      \"database_code\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"refreshed_at\": \"2009-05-15T17:54:46.053Z\",\n      \"newest_available_date\": \"1976-02-28\",\n      \"oldest_available_date\": \"1981-09-24\",\n      \"column_names\": [\n        \"string\",\n        \"string\"\n      ],\n      \"frequency\": \"string\",\n      \"premium\": true\n    },\n    {\n      \"id\": 8879,\n      \"dataset_code\": \"string\",\n      \"database_code\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"refreshed_at\": \"2013-01-05T06:31:39.608Z\",\n      \"newest_available_date\": \"1981-02-07\",\n      \"oldest_available_date\": \"2004-02-22\",\n      \"column_names\": [\n        \"string\",\n        \"string\"\n      ],\n      \"frequency\": \"string\",\n      \"premium\": true\n    }\n  ],\n  \"meta\": {\n    \"query\": \"string\",\n    \"per_page\": 8652,\n    \"current_page\": 6441,\n    \"prev_page\": 3683,\n    \"next_page\": 6785,\n    \"total_count\": 3799\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.nasdaq.com/api/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "516ed1b4-04b9-4d87-a43c-04ccbb4cbe90",
+    "name": "Nasdaq Data Link Time-Series REST Databases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats. Authenticated users receive up to 50,000 API calls per day.\n\nContact Support:\n Name: Nasdaq Data Link Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nasdaq Data Link Time-Series REST Databases API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Databases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/databases",
+            "params": [
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search query for database name or description"
+              }
+            ]
+          },
+          "docs": "Returns a list of all available Nasdaq Data Link databases with metadata."
+        },
+        {
+          "info": {
+            "name": "Get database metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/databases/:databaseCode",
+            "params": [
+              {
+                "name": "databaseCode",
+                "value": "",
+                "type": "path",
+                "description": "Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+              }
+            ]
+          },
+          "docs": "Returns metadata for a specific Nasdaq Data Link database."
+        },
+        {
+          "info": {
+            "name": "List datasets in a database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/databases/:databaseCode/datasets",
+            "params": [
+              {
+                "name": "databaseCode",
+                "value": "",
+                "type": "path",
+                "description": "Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all datasets available in a specific database."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

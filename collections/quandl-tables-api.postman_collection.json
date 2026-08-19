@@ -1,0 +1,486 @@
+{
+  "item": [
+    {
+      "id": "dbd07e4f-7872-4980-866a-0188e92d42c3",
+      "name": "Tables",
+      "description": {
+        "content": "Tabular dataset retrieval",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e3117968-93cc-4f8c-825b-abbd85ca06b7",
+          "name": "Query a datatable",
+          "request": {
+            "name": "Query a datatable",
+            "description": {
+              "content": "Returns rows from a Nasdaq Data Link datatable (tabular dataset). Supports row-level filtering, column selection, and pagination using cursor-based pagination. Maximum 10,000 rows per call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "datatables",
+                ":datatablesCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "qopts.columns",
+                  "value": "<string>",
+                  "description": "Comma-separated column names to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "qopts.per_page",
+                  "value": "100",
+                  "description": "Number of rows per page (max 10000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "qopts.cursor_id",
+                  "value": "<string>",
+                  "description": "Cursor ID for pagination from previous response"
+                },
+                {
+                  "disabled": false,
+                  "key": "qopts.export",
+                  "value": "<boolean>",
+                  "description": "Set to true to get a download link for full dataset"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datatablesCode",
+                  "description": "(Required) Database code and datatable code joined by slash (e.g. ZACKS/FC)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "766d2e08-c174-43f7-8884-740591c506c6",
+              "name": "Datatable rows",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datatables",
+                    ":datatablesCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "qopts.columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qopts.per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "qopts.cursor_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qopts.export",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datatablesCode",
+                      "description": "(Required) Database code and datatable code joined by slash (e.g. ZACKS/FC)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"datatable\": {\n    \"data\": [\n      [\n        \"string\",\n        \"string\"\n      ],\n      [\n        \"string\",\n        \"string\"\n      ]\n    ],\n    \"columns\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"string\"\n      }\n    ]\n  },\n  \"meta\": {\n    \"next_cursor_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aeae4c11-a242-4321-ae94-9521376a4fa7",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datatables",
+                    ":datatablesCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "qopts.columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qopts.per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "qopts.cursor_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qopts.export",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datatablesCode",
+                      "description": "(Required) Database code and datatable code joined by slash (e.g. ZACKS/FC)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d295decd-72bf-44a2-ae19-f2db9bc26348",
+              "name": "Invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datatables",
+                    ":datatablesCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "qopts.columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qopts.per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "qopts.cursor_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qopts.export",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datatablesCode",
+                      "description": "(Required) Database code and datatable code joined by slash (e.g. ZACKS/FC)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f431288c-062a-4a2a-a823-7c9768cbe988",
+              "name": "Dataset or database not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datatables",
+                    ":datatablesCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "qopts.columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qopts.per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "qopts.cursor_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qopts.export",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datatablesCode",
+                      "description": "(Required) Database code and datatable code joined by slash (e.g. ZACKS/FC)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "758dc28e-4df4-49a5-a2ef-24de409a80c3",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datatables",
+                    ":datatablesCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "qopts.columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qopts.per_page",
+                      "value": "100"
+                    },
+                    {
+                      "key": "qopts.cursor_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qopts.export",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datatablesCode",
+                      "description": "(Required) Database code and datatable code joined by slash (e.g. ZACKS/FC)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Number of requests allowed per day",
+                  "key": "X-RateLimit-Limit",
+                  "value": "4088"
+                },
+                {
+                  "disabled": false,
+                  "description": "Number of requests remaining today",
+                  "key": "X-RateLimit-Remaining",
+                  "value": "4088"
+                },
+                {
+                  "disabled": false,
+                  "description": "Epoch timestamp when limit resets",
+                  "key": "X-RateLimit-Reset",
+                  "value": "4088"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quandl_error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://data.nasdaq.com/api/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "845fcc5c-8fa8-4032-bcfb-37e27b2102c8",
+    "name": "Nasdaq Data Link Time-Series REST Databases Tables API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats. Authenticated users receive up to 50,000 API calls per day.\n\nContact Support:\n Name: Nasdaq Data Link Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nasdaq Data Link Time-Series REST Databases Datasets API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a time-series dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/datasets/:databaseCode/:datasetCode",
+            "params": [
+              {
+                "name": "databaseCode",
+                "value": "",
+                "type": "path",
+                "description": "Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+              },
+              {
+                "name": "datasetCode",
+                "value": "",
+                "type": "path",
+                "description": "Dataset code within the database (e.g., GDP, AAPL)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to return (0 returns all)"
+              },
+              {
+                "name": "column_index",
+                "value": "",
+                "type": "query",
+                "description": "Request a specific column (1-based index)"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Retrieve data rows on and after this date (YYYY-MM-DD)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "Retrieve data rows up to and including this date (YYYY-MM-DD)"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Return data in ascending or descending date order"
+              },
+              {
+                "name": "collapse",
+                "value": "",
+                "type": "query",
+                "description": "Frequency to collapse data to"
+              },
+              {
+                "name": "transform",
+                "value": "",
+                "type": "query",
+                "description": "Mathematical transformation to apply to values"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "Your Nasdaq Data Link API key"
+              }
+            ]
+          },
+          "docs": "Returns time-series data from a Nasdaq Data Link dataset. Supports date range filtering, column selection, frequency transformation, and return type selection (JSON, XML, CSV)."
+        },
+        {
+          "info": {
+            "name": "Get dataset metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/datasets/:databaseCode/:datasetCode/metadata",
+            "params": [
+              {
+                "name": "databaseCode",
+                "value": "",
+                "type": "path",
+                "description": "Database code (e.g., FRED, WIKI, CHRIS, BCOM)"
+              },
+              {
+                "name": "datasetCode",
+                "value": "",
+                "type": "path",
+                "description": "Dataset code within the database (e.g., GDP, AAPL)"
+              }
+            ]
+          },
+          "docs": "Returns metadata for a dataset including column names, description, and date range."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

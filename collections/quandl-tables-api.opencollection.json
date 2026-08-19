@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nasdaq Data Link Time-Series REST Databases Tables API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query a datatable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://data.nasdaq.com/api/v3/datatables/:datatablesCode",
+            "params": [
+              {
+                "name": "datatablesCode",
+                "value": "",
+                "type": "path",
+                "description": "Database code and datatable code joined by slash (e.g. ZACKS/FC)"
+              },
+              {
+                "name": "qopts.columns",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated column names to return"
+              },
+              {
+                "name": "qopts.per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows per page (max 10000)"
+              },
+              {
+                "name": "qopts.cursor_id",
+                "value": "",
+                "type": "query",
+                "description": "Cursor ID for pagination from previous response"
+              },
+              {
+                "name": "qopts.export",
+                "value": "",
+                "type": "query",
+                "description": "Set to true to get a download link for full dataset"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns rows from a Nasdaq Data Link datatable (tabular dataset). Supports row-level filtering, column selection, and pagination using cursor-based pagination. Maximum 10,000 rows per call."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
