@@ -28,7 +28,7 @@ tags:
   - Streaming
 created: '2026-03-18'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: quandl:nasdaq-data-link-tables-api
   name: Nasdaq Data Link Tables REST API
