@@ -60,6 +60,12 @@ apis:
   - Finance
   - Market Data
   - Streaming
+  - Real-Time
+  - REST
+  tags_raw:
+  - Finance
+  - Market Data
+  - Streaming
   - Real-time
   - REST
   properties:
