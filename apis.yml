@@ -93,6 +93,8 @@ apis:
   humanURL: https://docs.data.nasdaq.com/
   baseURL: https://data.nasdaq.com/api/v3
   tags:
+  - Database
+  tags_raw:
   - Databases
   properties:
   - type: OpenAPI
