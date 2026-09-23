@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Nasdaq Data Link Time-Series REST Databases Tables API
+  title: Nasdaq Data Link Time-Series REST Tables API
   description: Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats. Authenticated users receive up to 50,000 API calls per day.
   version: 3.0.0
   contact:
@@ -77,6 +77,16 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
+    QuandlError:
+      type: object
+      properties:
+        quandl_error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     DatatableResponse:
       type: object
       properties:
@@ -110,25 +120,21 @@ components:
               type: string
               nullable: true
               description: Cursor ID for next page; null if no more data
-    QuandlError:
-      type: object
-      properties:
-        quandl_error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
   responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
     NotFound:
       description: Dataset or database not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/QuandlError'
-    BadRequest:
-      description: Invalid request parameters
+    Unauthorized:
+      description: Invalid or missing API key
       content:
         application/json:
           schema:
@@ -148,12 +154,6 @@ components:
           schema:
             type: integer
           description: Epoch timestamp when limit resets
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
-    Unauthorized:
-      description: Invalid or missing API key
       content:
         application/json:
           schema:

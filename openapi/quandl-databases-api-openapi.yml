@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Nasdaq Data Link Time-Series REST Databases API
   description: Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats. Authenticated users receive up to 50,000 API calls per day.
@@ -102,6 +102,54 @@ paths:
                 $ref: '#/components/schemas/DatasetListResponse'
 components:
   schemas:
+    DatasetListResponse:
+      type: object
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetMetadata'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    DatabaseResponse:
+      type: object
+      properties:
+        database:
+          $ref: '#/components/schemas/Database'
+    QuandlError:
+      type: object
+      properties:
+        quandl_error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    Database:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        database_code:
+          type: string
+        description:
+          type: string
+        datasets_count:
+          type: integer
+        downloads:
+          type: integer
+        premium:
+          type: boolean
+        image:
+          type: string
+          format: uri
+        favorite:
+          type: boolean
+        url_name:
+          type: string
     DatasetMetadata:
       type: object
       properties:
@@ -158,54 +206,6 @@ components:
             $ref: '#/components/schemas/Database'
         meta:
           $ref: '#/components/schemas/PaginationMeta'
-    DatasetListResponse:
-      type: object
-      properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetMetadata'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-    DatabaseResponse:
-      type: object
-      properties:
-        database:
-          $ref: '#/components/schemas/Database'
-    QuandlError:
-      type: object
-      properties:
-        quandl_error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-    Database:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        database_code:
-          type: string
-        description:
-          type: string
-        datasets_count:
-          type: integer
-        downloads:
-          type: integer
-        premium:
-          type: boolean
-        image:
-          type: string
-          format: uri
-        favorite:
-          type: boolean
-        url_name:
-          type: string
   responses:
     NotFound:
       description: Dataset or database not found
