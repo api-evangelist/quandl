@@ -76,6 +76,44 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        X-RateLimit-Limit:
+          schema:
+            type: integer
+          description: Number of requests allowed per day
+        X-RateLimit-Remaining:
+          schema:
+            type: integer
+          description: Number of requests remaining today
+        X-RateLimit-Reset:
+          schema:
+            type: integer
+          description: Epoch timestamp when limit resets
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    Unauthorized:
+      description: Invalid or missing API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    NotFound:
+      description: Dataset or database not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
   schemas:
     QuandlError:
       type: object
@@ -120,44 +158,6 @@ components:
               type: string
               nullable: true
               description: Cursor ID for next page; null if no more data
-  responses:
-    BadRequest:
-      description: Invalid request parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
-    NotFound:
-      description: Dataset or database not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
-    Unauthorized:
-      description: Invalid or missing API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
-    RateLimited:
-      description: Rate limit exceeded
-      headers:
-        X-RateLimit-Limit:
-          schema:
-            type: integer
-          description: Number of requests allowed per day
-        X-RateLimit-Remaining:
-          schema:
-            type: integer
-          description: Number of requests remaining today
-        X-RateLimit-Reset:
-          schema:
-            type: integer
-          description: Epoch timestamp when limit resets
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
   securitySchemes:
     apiKeyQuery:
       type: apiKey

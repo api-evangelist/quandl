@@ -102,30 +102,6 @@ paths:
                 $ref: '#/components/schemas/DatasetListResponse'
 components:
   schemas:
-    DatasetListResponse:
-      type: object
-      properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetMetadata'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-    DatabaseResponse:
-      type: object
-      properties:
-        database:
-          $ref: '#/components/schemas/Database'
-    QuandlError:
-      type: object
-      properties:
-        quandl_error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     Database:
       type: object
       properties:
@@ -150,6 +126,23 @@ components:
           type: boolean
         url_name:
           type: string
+    PaginationMeta:
+      type: object
+      properties:
+        query:
+          type: string
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        prev_page:
+          type: integer
+          nullable: true
+        next_page:
+          type: integer
+          nullable: true
+        total_count:
+          type: integer
     DatasetMetadata:
       type: object
       properties:
@@ -180,23 +173,21 @@ components:
           type: string
         premium:
           type: boolean
-    PaginationMeta:
+    QuandlError:
       type: object
       properties:
-        query:
-          type: string
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        prev_page:
-          type: integer
-          nullable: true
-        next_page:
-          type: integer
-          nullable: true
-        total_count:
-          type: integer
+        quandl_error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    DatabaseResponse:
+      type: object
+      properties:
+        database:
+          $ref: '#/components/schemas/Database'
     DatabaseListResponse:
       type: object
       properties:
@@ -206,15 +197,24 @@ components:
             $ref: '#/components/schemas/Database'
         meta:
           $ref: '#/components/schemas/PaginationMeta'
+    DatasetListResponse:
+      type: object
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetMetadata'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
   responses:
-    NotFound:
-      description: Dataset or database not found
+    Unauthorized:
+      description: Invalid or missing API key
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/QuandlError'
-    Unauthorized:
-      description: Invalid or missing API key
+    NotFound:
+      description: Dataset or database not found
       content:
         application/json:
           schema:
