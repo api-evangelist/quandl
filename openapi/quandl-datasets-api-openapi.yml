@@ -129,12 +129,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    BadRequest:
-      description: Invalid request parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
     RateLimited:
       description: Rate limit exceeded
       headers:
@@ -154,6 +148,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/QuandlError'
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
     Unauthorized:
       description: Invalid or missing API key
       content:
@@ -166,22 +166,27 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/QuandlError'
+  parameters:
+    DatabaseCode:
+      name: databaseCode
+      in: path
+      required: true
+      description: Database code (e.g., FRED, WIKI, CHRIS, BCOM)
+      schema:
+        type: string
+    DatasetCode:
+      name: datasetCode
+      in: path
+      required: true
+      description: Dataset code within the database (e.g., GDP, AAPL)
+      schema:
+        type: string
   schemas:
     DatasetResponse:
       type: object
       properties:
         dataset:
           $ref: '#/components/schemas/DatasetWithData'
-    QuandlError:
-      type: object
-      properties:
-        quandl_error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     DatasetMetadataResponse:
       type: object
       properties:
@@ -217,6 +222,16 @@ components:
               type: string
             premium:
               type: boolean
+    QuandlError:
+      type: object
+      properties:
+        quandl_error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     DatasetWithData:
       type: object
       properties:
@@ -284,21 +299,6 @@ components:
         end_date:
           type: string
           format: date
-  parameters:
-    DatabaseCode:
-      name: databaseCode
-      in: path
-      required: true
-      description: Database code (e.g., FRED, WIKI, CHRIS, BCOM)
-      schema:
-        type: string
-    DatasetCode:
-      name: datasetCode
-      in: path
-      required: true
-      description: Dataset code within the database (e.g., GDP, AAPL)
-      schema:
-        type: string
   securitySchemes:
     apiKeyQuery:
       type: apiKey

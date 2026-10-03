@@ -102,6 +102,23 @@ paths:
                 $ref: '#/components/schemas/DatasetListResponse'
 components:
   schemas:
+    PaginationMeta:
+      type: object
+      properties:
+        query:
+          type: string
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        prev_page:
+          type: integer
+          nullable: true
+        next_page:
+          type: integer
+          nullable: true
+        total_count:
+          type: integer
     Database:
       type: object
       properties:
@@ -126,23 +143,6 @@ components:
           type: boolean
         url_name:
           type: string
-    PaginationMeta:
-      type: object
-      properties:
-        query:
-          type: string
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        prev_page:
-          type: integer
-          nullable: true
-        next_page:
-          type: integer
-          nullable: true
-        total_count:
-          type: integer
     DatasetMetadata:
       type: object
       properties:
@@ -173,6 +173,15 @@ components:
           type: string
         premium:
           type: boolean
+    DatasetListResponse:
+      type: object
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetMetadata'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
     QuandlError:
       type: object
       properties:
@@ -183,11 +192,6 @@ components:
               type: string
             message:
               type: string
-    DatabaseResponse:
-      type: object
-      properties:
-        database:
-          $ref: '#/components/schemas/Database'
     DatabaseListResponse:
       type: object
       properties:
@@ -197,15 +201,19 @@ components:
             $ref: '#/components/schemas/Database'
         meta:
           $ref: '#/components/schemas/PaginationMeta'
-    DatasetListResponse:
+    DatabaseResponse:
       type: object
       properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetMetadata'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
+        database:
+          $ref: '#/components/schemas/Database'
+  parameters:
+    DatabaseCode:
+      name: databaseCode
+      in: path
+      required: true
+      description: Database code (e.g., FRED, WIKI, CHRIS, BCOM)
+      schema:
+        type: string
   responses:
     Unauthorized:
       description: Invalid or missing API key
@@ -219,14 +227,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/QuandlError'
-  parameters:
-    DatabaseCode:
-      name: databaseCode
-      in: path
-      required: true
-      description: Database code (e.g., FRED, WIKI, CHRIS, BCOM)
-      schema:
-        type: string
   securitySchemes:
     apiKeyQuery:
       type: apiKey

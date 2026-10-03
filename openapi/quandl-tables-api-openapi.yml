@@ -77,12 +77,6 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   responses:
-    BadRequest:
-      description: Invalid request parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
     RateLimited:
       description: Rate limit exceeded
       headers:
@@ -102,6 +96,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/QuandlError'
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
     Unauthorized:
       description: Invalid or missing API key
       content:
@@ -115,16 +115,6 @@ components:
           schema:
             $ref: '#/components/schemas/QuandlError'
   schemas:
-    QuandlError:
-      type: object
-      properties:
-        quandl_error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     DatatableResponse:
       type: object
       properties:
@@ -158,6 +148,16 @@ components:
               type: string
               nullable: true
               description: Cursor ID for next page; null if no more data
+    QuandlError:
+      type: object
+      properties:
+        quandl_error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
   securitySchemes:
     apiKeyQuery:
       type: apiKey
