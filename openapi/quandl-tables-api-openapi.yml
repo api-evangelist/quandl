@@ -77,21 +77,8 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   responses:
-    RateLimited:
-      description: Rate limit exceeded
-      headers:
-        X-RateLimit-Limit:
-          schema:
-            type: integer
-          description: Number of requests allowed per day
-        X-RateLimit-Remaining:
-          schema:
-            type: integer
-          description: Number of requests remaining today
-        X-RateLimit-Reset:
-          schema:
-            type: integer
-          description: Epoch timestamp when limit resets
+    NotFound:
+      description: Dataset or database not found
       content:
         application/json:
           schema:
@@ -108,8 +95,21 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/QuandlError'
-    NotFound:
-      description: Dataset or database not found
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        X-RateLimit-Limit:
+          schema:
+            type: integer
+          description: Number of requests allowed per day
+        X-RateLimit-Remaining:
+          schema:
+            type: integer
+          description: Number of requests remaining today
+        X-RateLimit-Reset:
+          schema:
+            type: integer
+          description: Epoch timestamp when limit resets
       content:
         application/json:
           schema:

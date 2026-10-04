@@ -102,23 +102,6 @@ paths:
                 $ref: '#/components/schemas/DatasetListResponse'
 components:
   schemas:
-    PaginationMeta:
-      type: object
-      properties:
-        query:
-          type: string
-        per_page:
-          type: integer
-        current_page:
-          type: integer
-        prev_page:
-          type: integer
-          nullable: true
-        next_page:
-          type: integer
-          nullable: true
-        total_count:
-          type: integer
     Database:
       type: object
       properties:
@@ -143,6 +126,47 @@ components:
           type: boolean
         url_name:
           type: string
+    PaginationMeta:
+      type: object
+      properties:
+        query:
+          type: string
+        per_page:
+          type: integer
+        current_page:
+          type: integer
+        prev_page:
+          type: integer
+          nullable: true
+        next_page:
+          type: integer
+          nullable: true
+        total_count:
+          type: integer
+    DatasetListResponse:
+      type: object
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatasetMetadata'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    DatabaseResponse:
+      type: object
+      properties:
+        database:
+          $ref: '#/components/schemas/Database'
+    QuandlError:
+      type: object
+      properties:
+        quandl_error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     DatasetMetadata:
       type: object
       properties:
@@ -173,25 +197,6 @@ components:
           type: string
         premium:
           type: boolean
-    DatasetListResponse:
-      type: object
-      properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DatasetMetadata'
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-    QuandlError:
-      type: object
-      properties:
-        quandl_error:
-          type: object
-          properties:
-            code:
-              type: string
-            message:
-              type: string
     DatabaseListResponse:
       type: object
       properties:
@@ -201,11 +206,19 @@ components:
             $ref: '#/components/schemas/Database'
         meta:
           $ref: '#/components/schemas/PaginationMeta'
-    DatabaseResponse:
-      type: object
-      properties:
-        database:
-          $ref: '#/components/schemas/Database'
+  responses:
+    NotFound:
+      description: Dataset or database not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    Unauthorized:
+      description: Invalid or missing API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
   parameters:
     DatabaseCode:
       name: databaseCode
@@ -214,19 +227,6 @@ components:
       description: Database code (e.g., FRED, WIKI, CHRIS, BCOM)
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Invalid or missing API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
-    NotFound:
-      description: Dataset or database not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
   securitySchemes:
     apiKeyQuery:
       type: apiKey
