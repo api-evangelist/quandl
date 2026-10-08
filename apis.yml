@@ -150,6 +150,10 @@ apis:
   - type: SDKs
     url: https://docs.data.nasdaq.com/docs/python-installation
 common:
+  - type: Plans
+    url: plans/quandl-plans-pricing.yml
+  - type: FinOps
+    url: finops/quandl-finops.yml
   - type: AgenticAccess
     url: agentic-access/quandl-agentic-access.yml
   - type: DomainSecurity
