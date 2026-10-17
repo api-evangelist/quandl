@@ -77,12 +77,6 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   responses:
-    NotFound:
-      description: Dataset or database not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
     BadRequest:
       description: Invalid request parameters
       content:
@@ -110,6 +104,12 @@ components:
           schema:
             type: integer
           description: Epoch timestamp when limit resets
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    NotFound:
+      description: Dataset or database not found
       content:
         application/json:
           schema:

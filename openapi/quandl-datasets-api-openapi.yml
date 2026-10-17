@@ -128,6 +128,44 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    Unauthorized:
+      description: Invalid or missing API key
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        X-RateLimit-Limit:
+          schema:
+            type: integer
+          description: Number of requests allowed per day
+        X-RateLimit-Remaining:
+          schema:
+            type: integer
+          description: Number of requests remaining today
+        X-RateLimit-Reset:
+          schema:
+            type: integer
+          description: Epoch timestamp when limit resets
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
+    NotFound:
+      description: Dataset or database not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/QuandlError'
   schemas:
     DatasetWithData:
       type: object
@@ -246,57 +284,19 @@ components:
       properties:
         dataset:
           $ref: '#/components/schemas/DatasetWithData'
-  responses:
-    NotFound:
-      description: Dataset or database not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
-    BadRequest:
-      description: Invalid request parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
-    RateLimited:
-      description: Rate limit exceeded
-      headers:
-        X-RateLimit-Limit:
-          schema:
-            type: integer
-          description: Number of requests allowed per day
-        X-RateLimit-Remaining:
-          schema:
-            type: integer
-          description: Number of requests remaining today
-        X-RateLimit-Reset:
-          schema:
-            type: integer
-          description: Epoch timestamp when limit resets
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
-    Unauthorized:
-      description: Invalid or missing API key
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/QuandlError'
   parameters:
-    DatasetCode:
-      name: datasetCode
-      in: path
-      required: true
-      description: Dataset code within the database (e.g., GDP, AAPL)
-      schema:
-        type: string
     DatabaseCode:
       name: databaseCode
       in: path
       required: true
       description: Database code (e.g., FRED, WIKI, CHRIS, BCOM)
+      schema:
+        type: string
+    DatasetCode:
+      name: datasetCode
+      in: path
+      required: true
+      description: Dataset code within the database (e.g., GDP, AAPL)
       schema:
         type: string
   securitySchemes:
