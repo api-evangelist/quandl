@@ -1,4 +1,4 @@
-# Quandl (Nasdaq Data Link) (quandl)
+# Quandl (Nasdaq Data Link)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,115 +66,141 @@
 
 Nasdaq Data Link (formerly Quandl) provides REST and streaming APIs for financial and economic data including time-series datasets, tabular datasets, and real-time market data feeds. Datasets cover stock prices, economic indicators, interest rates, commodities, equity fundamentals, options data, and alternative data sets.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/quandl/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/quandl/refs/heads/main/apis.yml)
+**Areas:** Finance · Market Data · Economic Data · Time Series · Streaming
 
-## Scope
+## Quandl (Nasdaq Data Link) on APIs.io
 
-- **Type:** Index
+Everything profiled for Quandl (Nasdaq Data Link) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/quandl/](https://apis.io/providers/quandl/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Finance
-- Market Data
-- Economic Data
-- Time Series
-- Streaming
+- [Nasdaq Data Link Tables REST API](https://apis.io/apis/quandl/nasdaq-data-link-tables-api/) — Nasdaq Data Link Tables API provides access to tabular financial datasets including equity fundamentals, options data, and alternative data sets. Limited to…
+- [Nasdaq Cloud Data Service (NCDS) Streaming API](https://apis.io/apis/quandl/nasdaq-cloud-data-service-api/) — Nasdaq Cloud Data Service (NCDS) provides streaming and REST APIs for real-time and delayed market data delivery including equities, options, and fixed…
+- [Quandl (Nasdaq Data Link) Databases API](https://apis.io/apis/quandl/quandl-databases-api/) — Database catalog and metadata
+- [Quandl (Nasdaq Data Link) Datasets API](https://apis.io/apis/quandl/quandl-datasets-api/) — Time-series dataset retrieval
+- [Quandl (Nasdaq Data Link) Tables API](https://apis.io/apis/quandl/quandl-tables-api/) — Tabular dataset retrieval
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-18
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Nasdaq Data Link REST API (Time-Series)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Nasdaq Data Link REST API (formerly Quandl) provides access to financial and economic time-series datasets including stock prices, economic indicators, interest rates, and commodity data in JSON, XML, and CSV formats. Authenticated users receive up to 50,000 calls per day.
+- [Quandl Agentic Access](https://apis.io/agentic-access/quandl/quandl-agentic-access/)
 
-- **Human URL:** [https://docs.data.nasdaq.com/](https://docs.data.nasdaq.com/)
-- **Base URL:** `https://data.nasdaq.com/api/v3`
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- Finance
-- Economic Data
-- Time Series
-- Market Data
-- REST
+- [Nasdaq Data Link Dataset](https://apis.io/schemas/quandl/nasdaq-data-link-dataset/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://docs.data.nasdaq.com/)
-- [Reference](https://docs.data.nasdaq.com/)
-- [Getting Started](https://docs.data.nasdaq.com/docs/getting-started)
-- [Rate Limits](https://docs.data.nasdaq.com/docs/rate-limits)
-- [S D Ks](https://docs.data.nasdaq.com/docs/python-installation)
-- [OpenAPI](openapi/nasdaq-data-link-timeseries-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nasdaq-data-link-timeseries.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasdaq-data-link-timeseries.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Linked-data contexts for the provider's vocabulary.
 
-### Nasdaq Data Link Tables REST API
+- [Nasdaq Data Link Context](https://apis.io/jsonld/quandl/nasdaq-data-link-context/)
 
-Nasdaq Data Link Tables API provides access to tabular financial datasets including equity fundamentals, options data, and alternative data sets. Limited to 10,000 rows per call with pagination support up to 1,000,000 rows via the Python client.
+#### Collections (4)
 
-- **Human URL:** [https://docs.data.nasdaq.com/](https://docs.data.nasdaq.com/)
-- **Base URL:** `https://data.nasdaq.com/api/v3`
+Postman and Open Collection request collections.
 
-#### Tags
+- [Nasdaq Data Link Time-Series REST API](https://apis.io/collections/quandl/open-nasdaq-data-link-timeseries/)
+- [Nasdaq Data Link Time-Series REST Databases API](https://apis.io/collections/quandl/open-quandl-databases-api/)
+- [Nasdaq Data Link Time-Series REST Databases Datasets API](https://apis.io/collections/quandl/open-quandl-datasets-api/)
+- [Nasdaq Data Link Time-Series REST Databases Tables API](https://apis.io/collections/quandl/open-quandl-tables-api/)
 
-- Finance
-- Market Data
-- Tables
-- REST
+#### Governance rules (1)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://docs.data.nasdaq.com/)
-- [Rate Limits](https://docs.data.nasdaq.com/docs/rate-limits-1)
-- [Postman Collection](collections/nasdaq-data-link-timeseries.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasdaq-data-link-timeseries.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Quandl (Nasdaq Data Link) — jsonschema rules](https://apis.io/rules/quandl/quandl-jsonschema-spectral-rules/)
 
-### Nasdaq Cloud Data Service (NCDS) Streaming API
+#### Security (2)
 
-Nasdaq Cloud Data Service (NCDS) provides streaming and REST APIs for real-time and delayed market data delivery including equities, options, and fixed income from Nasdaq exchange feeds.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://github.com/Nasdaq/NasdaqCloudDataService-REST-API](https://github.com/Nasdaq/NasdaqCloudDataService-REST-API)
+- [Quandl Authentication](https://apis.io/security/quandl/quandl-authentication/)
+- [Quandl Domain Security](https://apis.io/security/quandl/quandl-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Finance
-- Market Data
-- Streaming
-- Real-time
-- REST
+Published plans, tiers and prices.
 
-#### Properties
+- [Quandl Plans Pricing](https://apis.io/plans/quandl/quandl-plans-pricing/)
 
-- [Documentation](https://github.com/Nasdaq/NasdaqCloudDataService-REST-API)
-- [S D Ks](https://github.com/Nasdaq/NasdaqCloudDataService-SDK-Python)
-- [S D Ks](https://github.com/Nasdaq/NasdaqCloudDataService-SDK-Java)
-- [Postman Collection](collections/nasdaq-data-link-timeseries.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nasdaq-data-link-timeseries.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-## Common Properties
+Published request limits.
 
-- [LinkedIn](https://www.linkedin.com/company/quandl)
-- [Portal](https://data.nasdaq.com/)
-- [Documentation](https://docs.data.nasdaq.com/)
-- [Getting Started](https://docs.data.nasdaq.com/docs/getting-started)
-- [Rate Limits](https://docs.data.nasdaq.com/docs/rate-limits)
+- [Quandl Rate Limits](https://apis.io/rate-limits/quandl/quandl-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Quandl Finops](https://apis.io/finops/quandl/quandl-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://data.nasdaq.com/)
+- [Documentation](https://docs.data.nasdaq.com/)
+- [Getting started](https://docs.data.nasdaq.com/docs/getting-started)
 - [Support](https://docs.data.nasdaq.com/docs/contact-support)
-- [GitHub Organization](https://github.com/Nasdaq)
-- [GitHub Organization](https://github.com/quandl)
-- [S D Ks](https://github.com/Nasdaq/data-link-python)
-- [S D Ks](https://github.com/Nasdaq/NasdaqCloudDataService-SDK-Python)
-- [S D Ks](https://github.com/Nasdaq/NasdaqCloudDataService-SDK-Java)
-- [OpenAPI](openapi/nasdaq-data-link-timeseries-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](json-schema/nasdaq-data-link-dataset-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](json-ld/nasdaq-data-link-context.jsonld)
+- [GitHub](https://github.com/Nasdaq)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 55.6 |
+| Contract governance | 9.8 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 60.7 |
+| Access clarity | 5.3 |
+
+**Agent readiness 25.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | verified |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 21.3** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/quandl/](https://apis.io/providers/quandl/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Quandl (Nasdaq Data Link): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/quandl/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
